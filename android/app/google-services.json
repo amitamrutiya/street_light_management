@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "760649996735",
+    "project_id": "smart-street-light-f6ee8",
+    "storage_bucket": "smart-street-light-f6ee8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760649996735:android:0d24daf5ac93240cb0e90a",
+        "android_client_info": {
+          "package_name": "com.example.street_light_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760649996735-ttr2ero70c48spbet1h2p732u389dq8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChxsvO--CnVdg--dI1DTCjNIi0yAeirUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760649996735-ttr2ero70c48spbet1h2p732u389dq8t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "760649996735-6uig1bvs92lvt6e7t7pjap8k9sbvanm9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.streetLightManagement"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
