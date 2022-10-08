@@ -11,7 +11,6 @@ import 'package:street_light_management/common_weights/show_error_snackbar.dart'
 import 'package:street_light_management/constant/app_colors.dart';
 import 'package:street_light_management/controller/internet_controller.dart';
 import 'package:street_light_management/main.dart';
-import 'package:street_light_management/model/user_model.dart';
 import 'package:path/path.dart' as Path;
 
 class AuthController extends GetxController {
@@ -75,21 +74,22 @@ class AuthController extends GetxController {
     navigatorKey.currentState!.pop();
   }
 
-  Future<void> uploadUserData(String name, String number, String email) {
-    UserModel newUser = UserModel(
-        uid: FirebaseAuth.instance.currentUser!.uid,
-        email: email,
-        phone: number,
-        name: name,
-        photo_url: "");
-    return FirebaseFirestore.instance
-        .collection("newuser")
-        .add(newUser.toJson())
-        .then((_) async {
-      print("got data");
-    }).catchError((error) {
-      ShowErrorSnackBar.showSnackBar(text: "An error occured");
-    });
+  Future uploadUserData(String name, String number, String email) async {
+    final DocumentReference r =
+        FirebaseFirestore.instance.collection("users").doc(uid.value);
+    await r
+        .set({
+          "_name": name.toString(),
+          "_email": email.toString(),
+          "_uid": FirebaseAuth.instance.currentUser!.uid.toString(),
+          "_photo_url": "",
+          "_phone": number.toString(),
+          "_createdAt": DateTime.now(),
+        })
+        .then((value) => print('got data'))
+        .catchError((error) {
+          ShowErrorSnackBar.showSnackBar(text: "An error occured");
+        });
   }
 
   Future signIn(BuildContext context, String email, String password) async {
@@ -111,12 +111,8 @@ class AuthController extends GetxController {
     navigatorKey.currentState!.pop();
   }
 
-  final googleSignIn = GoogleSignIn();
-
-  GoogleSignInAccount? _user;
-  GoogleSignInAccount get user => _user!;
-
   Future googleLogin(BuildContext context) async {
+    final googleSignIn = GoogleSignIn();
     await internetController.checkInternetConnection();
     if (internetController.hasInternet == false) {
       ShowErrorSnackBar.showSnackBar(text: "Check Your Internet Connection");
@@ -278,14 +274,12 @@ class AuthController extends GetxController {
 
   // signout
   Future userSignOut() async {
-    FirebaseAuth.instance.signOut;
-    if (sign_in_with_google == true) {
-      await GoogleSignIn().signOut();
+    await GoogleSignIn().signOut();
 
-      sign_in_with_google(false);
-    } else {
-      sign_in_with_mail(false);
-    }
+    sign_in_with_google(false);
+
+    await FirebaseAuth.instance.signOut();
+
     // clear all storage information
     clearStoredData();
   }

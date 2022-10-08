@@ -18,114 +18,116 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      backgroundColor: AppColors.primaryLightColor,
-      body: Form(
-        key: formKey,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: Center(
-                      child: Hero(
-                        tag: 'login_img',
-                        child: Stack(
-                          children: [
-                            Image(
-                              fit: BoxFit.cover,
-                              image: const AssetImage(forget_password),
-                              height: size.height * 0.4,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: Dimensions.height20),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50, left: 15),
-                    child: Align(
-                      alignment: Alignment.topLeft,
-                      child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.black,
-                        child: Center(
-                          child: IconButton(
-                              icon: const Icon(
-                                Icons.arrow_back_sharp,
-                                // size: 40,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryLightColor,
+        body: Form(
+          key: formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: Center(
+                        child: Hero(
+                          tag: 'login_img',
+                          child: Stack(
+                            children: [
+                              Image(
+                                fit: BoxFit.cover,
+                                image: const AssetImage(forget_password),
+                                height: size.height * 0.4,
                               ),
-                              color: AppColors.primaryLightColor,
-                              onPressed: () => Get.back()),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
-              SizedBox(height: Dimensions.height30),
-              Center(
-                child: BigText(
-                  text: "Receive an email to",
-                  size: 24,
+                    SizedBox(height: Dimensions.height20),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50, left: 15),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: CircleAvatar(
+                          radius: 25,
+                          backgroundColor: Colors.black,
+                          child: Center(
+                            child: IconButton(
+                                icon: const Icon(
+                                  Icons.arrow_back_sharp,
+                                  // size: 40,
+                                ),
+                                color: AppColors.primaryLightColor,
+                                onPressed: () => Get.back()),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              Center(
-                child: BigText(
-                  text: "reset your password.",
-                  size: 24,
-                ),
-              ),
-              SizedBox(height: Dimensions.height30),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
-                child: TextFormField(
-                  
-                  decoration:  InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text("E-Mail"),
-                    hintText: authController.email.value.toString()
+                SizedBox(height: Dimensions.height30),
+                Center(
+                  child: BigText(
+                    text: "Receive an email to",
+                    size: 24,
                   ),
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Please enter your email';
-                    } else if (!(GetUtils.isEmail(value))) {
-                      return 'Please enter your valid email address';
-                    } else {
-                      return null;
-                    }
-                  },
                 ),
-              ),
-              SizedBox(height: Dimensions.height20),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
-                child: SizedBox(
-                  height: Dimensions.height10 * 5,
-                  child: ElevatedButton(
-                    onPressed: () => resetPassword(context),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.mail),
-                        SizedBox(
-                          width: Dimensions.height10,
-                        ),
-                        Text(
-                          "Reset Password",
-                          style: TextStyle(fontSize: Dimensions.font16),
-                        ),
-                      ],
+                Center(
+                  child: BigText(
+                    text: "reset your password.",
+                    size: 24,
+                  ),
+                ),
+                SizedBox(height: Dimensions.height30),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
+                  child: TextFormField(
+                    
+                    decoration:  InputDecoration(
+                      border: OutlineInputBorder(),
+                      label: Text("E-Mail"),
+                      hintText: authController.email.value.toString()
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email';
+                      } else if (!(GetUtils.isEmail(value))) {
+                        return 'Please enter your valid email address';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                SizedBox(height: Dimensions.height20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
+                  child: SizedBox(
+                    height: Dimensions.height10 * 5,
+                    child: ElevatedButton(
+                      onPressed: () => resetPassword(context),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.mail),
+                          SizedBox(
+                            width: Dimensions.height10,
+                          ),
+                          Text(
+                            "Reset Password",
+                            style: TextStyle(fontSize: Dimensions.font16),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -8,6 +8,7 @@ import 'package:street_light_management/screen/signup_screen/signup_screen.dart'
 import 'package:street_light_management/screen/splash_screen.dart';
 import 'package:street_light_management/screen/task_assign/task_assign_screen.dart';
 import 'package:street_light_management/screen/user_home_page/user_main_screen.dart';
+import 'package:street_light_management/screen/user_home_page/view_more_screen.dart';
 import 'package:street_light_management/screen/verify_email_screen.dart';
 import 'package:street_light_management/screen/welcome_screen.dart';
 
@@ -24,6 +25,7 @@ class RouteHelper {
   static const String complaintScreen = '/complaint-screen';
   static const String taskAssignScreen = '/task-assign-screen';
   static const String profileScreen = '/profile-screen';
+  static const String viewMoreScreen = '/view-more-screen';
 
   static String getSplashScreen() => splashScreen;
   static String getWelcomeScreen() => welcomeScreen;
@@ -37,6 +39,7 @@ class RouteHelper {
   static String getComplaintScreen() => complaintScreen;
   static String getTaskAssignScreen() => taskAssignScreen;
   static String getProfileScreen() => profileScreen;
+  static String getViewMoreScreen() => viewMoreScreen;
 
   static List<GetPage> routes = [
     GetPage(
@@ -57,7 +60,7 @@ class RouteHelper {
     ),
     GetPage(
       name: verifyEmailScreen,
-      page: () =>  const VerifyEmailScreen(),
+      page: () => const VerifyEmailScreen(),
     ),
     GetPage(
       name: userMainScrenen,
@@ -74,7 +77,7 @@ class RouteHelper {
     GetPage(
       name: customeDrawerScreen,
       transition: Transition.leftToRight,
-      page: () => const CustomDrawerScreen(),
+      page: () =>  CustomDrawerScreen(),
     ),
     GetPage(
       name: taskAssignScreen,
@@ -82,7 +85,11 @@ class RouteHelper {
     ),
     GetPage(
       name: profileScreen,
-      page: () =>  ProfileScreen(),
+      page: () => ProfileScreen(),
     ),
+    GetPage(
+        name: viewMoreScreen,
+        page: () => ViewMoreScreen(),
+        transition: Transition.rightToLeft)
   ];
 }

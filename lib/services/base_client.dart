@@ -34,9 +34,9 @@ class BaseClient {
     var url = Uri.parse(baseUrl + api);
     var payload = json.encode(payloadObj);
     var headers = {
-      'Authorization': 'Bearer sfie328370428387=',
-      'Content-Type': 'application/json',
-      'api_key': 'ief873fj38uf38uf83u839898989',
+      // 'Authorization': 'Bearer sfie328370428387=',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'api_key': 'KJ4TJDKRFHTNGG70&field2',
     };
     try {
       var response = await http
@@ -119,4 +119,4 @@ class BaseClient {
             response.request!.url.toString());
     }
   }
-}
+} 

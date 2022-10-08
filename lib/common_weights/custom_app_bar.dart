@@ -1,9 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:street_light_management/common_weights/big_text.dart';
 import 'package:street_light_management/constant/app_colors.dart';
 import 'package:street_light_management/constant/dimensions.dart';
 import 'package:street_light_management/constant/image_string.dart';
+import 'package:street_light_management/controller/auth_controller.dart';
+import 'package:street_light_management/routing/route_helper.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
@@ -13,7 +15,7 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? imageUrl = FirebaseAuth.instance.currentUser!.photoURL;
+    final AuthController authController = Get.find();
     return Container(
       width: double.infinity,
       height: 100,
@@ -49,17 +51,24 @@ class CustomAppBar extends StatelessWidget {
             size: Dimensions.font26,
           ),
           GestureDetector(
-            onTap: null,
+            onTap: () => Get.toNamed(RouteHelper.getProfileScreen()),
             child: Container(
-                width: 55,
-                height: 55,
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: imageUrl != null
-                    ? Image.network(imageUrl)
-                    : Image.asset(profile_image)),
+              width: 55,
+              height: 55,
+              clipBehavior: Clip.antiAlias,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              child: authController.photoURL.value != null
+                  ? Image.network(authController.photoURL.value.toString())
+                  : const Center(
+                      child: Icon(
+                        Icons.camera_alt_outlined,
+                        size: 40,
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+            ),
           ),
         ],
       ),

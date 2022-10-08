@@ -4,27 +4,16 @@ import 'package:get/get.dart';
 import 'package:street_light_management/common_weights/big_text.dart';
 import 'package:street_light_management/common_weights/small_text.dart';
 import 'package:street_light_management/constant/app_colors.dart';
-import 'package:street_light_management/constant/image_string.dart';
 import 'package:street_light_management/controller/auth_controller.dart';
 import 'package:street_light_management/screen/forgot_password_screen.dart';
 import 'package:street_light_management/routing/route_helper.dart';
 
-class CustomDrawerScreen extends StatefulWidget {
-  const CustomDrawerScreen({Key? key}) : super(key: key);
+class CustomDrawerScreen extends StatelessWidget {
+  CustomDrawerScreen({Key? key}) : super(key: key);
 
-  @override
-  _CustomDrawerScreenState createState() => _CustomDrawerScreenState();
-}
-
-class _CustomDrawerScreenState extends State<CustomDrawerScreen> {
   final AuthController authController = Get.find<AuthController>();
   String? imageUrl;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  @override
-  void initState() {
-    imageUrl = FirebaseAuth.instance.currentUser!.photoURL;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +22,9 @@ class _CustomDrawerScreenState extends State<CustomDrawerScreen> {
       elevation: 10,
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(20, 35, 10, 50),
-        child: Container(
+        child: SizedBox(
           width: 100,
           height: 100,
-          decoration: const BoxDecoration(
-              // color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,37 +50,38 @@ class _CustomDrawerScreenState extends State<CustomDrawerScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                      width: 60,
-                      height: 60,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: imageUrl != null
-                          ? Image.network(
-                              imageUrl!,
-                              fit: BoxFit.cover,
-                            )
-                          : Image.asset(
-                              profile_image,
-                              fit: BoxFit.cover,
-                            )),
-                  Container(
+                    width: 60,
+                    height: 60,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: FirebaseAuth.instance.currentUser!.photoURL != null
+                        ? Image.network(
+                            authController.photoURL.value.toString(),
+                            fit: BoxFit.cover,
+                          )
+                        : const Center(
+                            child: Icon(
+                              Icons.camera_alt_outlined,
+                              size: 40,
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
+                  ),
+                  const SizedBox(
                     width: 10,
                     height: 100,
-                    decoration: const BoxDecoration(
-                        // color: FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BigText(
-                        text: authController.name.value.toString(),
+                        text:FirebaseAuth.instance.currentUser!.displayName.toString(),
                       ),
                       SmallText(
-                        text: authController.email.value.toString(),
+                        text:FirebaseAuth.instance.currentUser!.email.toString(),
                       ),
                     ],
                   ),
@@ -108,6 +95,11 @@ class _CustomDrawerScreenState extends State<CustomDrawerScreen> {
                 height: 20,
               ),
               CustomDrawerListTile(
+                leadingIcon: Icons.home_outlined,
+                lable: "Home",
+                onTapEvent: () => Get.toNamed(RouteHelper.getUserMainScreen()),
+              ),
+              CustomDrawerListTile(
                 leadingIcon: Icons.person_outline_outlined,
                 lable: "Profile",
                 onTapEvent: () => Get.toNamed(RouteHelper.getProfileScreen()),
@@ -117,15 +109,8 @@ class _CustomDrawerScreenState extends State<CustomDrawerScreen> {
                 lable: "Edit Password",
                 onTapEvent: () {
                   Get.back();
-                  Get.to(() => ForgotPasswordScreen(
-                      ));
+                  Get.to(() => ForgotPasswordScreen());
                 },
-              ),
-              CustomDrawerListTile(
-                leadingIcon: Icons.light,
-                lable: "Controll Light",
-                onTapEvent: () =>
-                    Get.toNamed(RouteHelper.getControllLightScreen()),
               ),
               CustomDrawerListTile(
                 leadingIcon: Icons.message_outlined,
@@ -144,8 +129,10 @@ class _CustomDrawerScreenState extends State<CustomDrawerScreen> {
               CustomDrawerListTile(
                 leadingIcon: Icons.logout,
                 lable: "Logout",
-                onTapEvent: () => FirebaseAuth.instance.signOut().then(
-                    (value) => Get.toNamed(RouteHelper.getWelcomeScreen())),
+                onTapEvent: () => authController.userSignOut()
+                    .then(
+                        (value) => Get.offAll(RouteHelper.getWelcomeScreen()))
+                    
               ),
             ],
           ),
@@ -181,16 +168,12 @@ class CustomDrawerListTile extends StatelessWidget {
                 color: Colors.black,
                 size: 27,
               ),
-              Container(
+              const SizedBox(
                 width: 20,
                 height: 20,
-                decoration: const BoxDecoration(
-                    // color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
               ),
               Text(
                 lable,
-                // style: FlutterFlowTheme.of(context).bodyText1,
               ),
             ],
           ),

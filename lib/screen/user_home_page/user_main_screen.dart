@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:street_light_management/common_weights/big_text.dart';
 import 'package:street_light_management/common_weights/custom_app_bar.dart';
 import 'package:street_light_management/constant/image_string.dart';
+import 'package:street_light_management/routing/route_helper.dart';
 import 'package:street_light_management/screen/drawer/drawer.dart';
 import 'package:street_light_management/screen/user_home_page/custom_grid_tile.dart';
 import 'package:street_light_management/screen/user_home_page/light_status_row_text.dart';
@@ -26,7 +28,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
             return SafeArea(
               child: Scaffold(
                 key: _scaffoldKey,
-                drawer: const CustomDrawerScreen(),
+                drawer:  CustomDrawerScreen(),
                 body: SizedBox(
                   width: double.infinity,
                   height: double.infinity,
@@ -59,11 +61,6 @@ class _UserMainScreenState extends State<UserMainScreen> {
                                   children: [
                                     BigText(
                                       text: 'Stree Light Status',
-                                    ),
-                                    const Text(
-                                      'View More >',
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.justify,
                                     ),
                                   ],
                                 ),
@@ -118,9 +115,13 @@ class _UserMainScreenState extends State<UserMainScreen> {
                                       BigText(
                                         text: 'Area Wise Light Status',
                                       ),
-                                      const Text(
-                                        'View More >',
-                                        textAlign: TextAlign.justify,
+                                      GestureDetector(
+                                        onTap: () => Get.toNamed(
+                                            RouteHelper.getViewMoreScreen()),
+                                        child: const Text(
+                                          'View More >',
+                                          textAlign: TextAlign.justify,
+                                        ),
                                       ),
                                     ],
                                   ),

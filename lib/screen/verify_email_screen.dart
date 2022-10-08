@@ -35,17 +35,17 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         (_) => checkEmailVerified(),
       );
     } else {
-      getdata();
+      // getdata();
     }
     super.initState();
   }
 
-  Future<void> getdata() async {
-    await authController.getDataFromSharedPreferences();
-    await authController
-        .getUserDataFromFirestore(FirebaseAuth.instance.currentUser!.uid);
+  // Future<void> getdata() async {
+  //   // await authController.getDataFromSharedPreferences();
+  //   await authController
+  //       .getUserDataFromFirestore(FirebaseAuth.instance.currentUser!.uid);
     
-  }
+  // }
 
   Future sendVerificationEmail() async {
     try {

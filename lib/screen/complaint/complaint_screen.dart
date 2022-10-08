@@ -62,7 +62,7 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
       child: Scaffold(
         backgroundColor: AppColors.primaryLightColor,
         key: _scaffoldKey,
-        drawer: const CustomDrawerScreen(),
+        drawer: CustomDrawerScreen(),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -95,7 +95,7 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
                           BigText(
                             text: 'Select Light',
                           ),
-                          const ThreeBulbInRow(),
+                          ThreeBulbInRow(),
                           const Divider(
                             thickness: 2,
                             color: Colors.black,
@@ -285,7 +285,10 @@ class _ComplaintScreenState extends State<ComplaintScreen> {
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  print('Button pressed ...');
+                                  // textController1!.clear();
+                                  // textController2!.clear();
+                                  // image = null;
+                                  // _pickedFile = null;
                                 },
                                 child: const Text('Submit'),
                               ),

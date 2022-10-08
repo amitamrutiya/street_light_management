@@ -9,6 +9,7 @@ import 'package:street_light_management/model/task_assign_model.dart';
 import 'package:street_light_management/screen/controll_light/three_bulb_in_row.dart';
 import 'package:street_light_management/screen/drawer/drawer.dart';
 import 'package:street_light_management/screen/task_assign/date_picker_field.dart';
+import 'package:street_light_management/screen/task_assign/show_area_list.dart';
 import 'package:street_light_management/screen/task_assign/show_list_engineer_dialog.dart';
 
 class TaskAssignScreen extends StatelessWidget {
@@ -25,7 +26,7 @@ class TaskAssignScreen extends StatelessWidget {
         child: Scaffold(
       key: _scaffoldKey,
       backgroundColor: AppColors.primaryLightColor,
-      drawer: const CustomDrawerScreen(),
+      drawer:  CustomDrawerScreen(),
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
@@ -44,10 +45,21 @@ class TaskAssignScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     BigText(
-                      text: 'Select Faulty Light',
-                      size: 20,
+                      text: 'Select Area',
+                      size: 17,
                     ),
-                    const ThreeBulbInRow(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const ShowAreaListDialoge(),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    BigText(
+                      text: 'Select Faulty Light',
+                      size: 17,
+                    ),
+                    ThreeBulbInRow(),
                     const Divider(
                       thickness: 2,
                       color: Colors.black,

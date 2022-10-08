@@ -45,7 +45,6 @@ class WelcomeScreen extends StatelessWidget {
               );
             }
             if (snapshot.hasData) {
-    
               return VerifyEmailScreen();
             } else {
               return Stack(

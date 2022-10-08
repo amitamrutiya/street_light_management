@@ -36,110 +36,112 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController authController = Get.find<AuthController>();
-    return Scaffold(
-      backgroundColor: AppColors.primaryLightColor,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: AppColors.primaryColor,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryLightColor,
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: AppColors.primaryColor,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Get.back();
+            },
           ),
-          onPressed: () {
-            Get.back();
-          },
         ),
-      ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                height: 450,
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    BigText(text: 'Full Name'),
-                    textfield(
-                      hintText: authController.name.toString(),
-                    ),
-                    BigText(text: 'Email Id'),
-                    textfield(hintText: authController.email.toString()),
-                    BigText(text: 'Phone Number'),
-                    textfield(
-                      hintText: authController.phone.toString(),
-                    ),
-                    const SizedBox(height: 10),
-                    SizedBox(
-                      height: 55,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        // color: Colors.deepPurple,
-                        child: const Center(
-                          child: Text(
-                            "Update",
-                            style: TextStyle(
-                              fontSize: 23,
-                              color: Colors.white,
+        body: Stack(
+          alignment: Alignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  height: 450,
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      BigText(text: 'Full Name'),
+                      textfield(
+                        hintText: authController.name.toString(),
+                      ),
+                      BigText(text: 'Email Id'),
+                      textfield(hintText: authController.email.toString()),
+                      BigText(text: 'Phone Number'),
+                      textfield(
+                        hintText: authController.phone.toString(),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 55,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          // color: Colors.deepPurple,
+                          child: const Center(
+                            child: Text(
+                              "Update",
+                              style: TextStyle(
+                                fontSize: 23,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          CustomPaint(
-            painter: HeaderCurvedContainer(),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  "Profile",
-                  style: TextStyle(
-                    fontSize: 35,
-                    letterSpacing: 1.5,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+            CustomPaint(
+              painter: HeaderCurvedContainer(),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    "Profile",
+                    style: TextStyle(
+                      fontSize: 35,
+                      letterSpacing: 1.5,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              ),
-              ProfileImage(),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 270, left: 184),
-            child: CircleAvatar(
-              backgroundColor: Colors.black54,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.edit,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  // print(authController.photoURL.value.toString());
-                },
-              ),
+                ProfileImage(),
+              ],
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 270, left: 184),
+              child: CircleAvatar(
+                backgroundColor: Colors.black54,
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.edit,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    // print(authController.photoURL.value.toString());
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
