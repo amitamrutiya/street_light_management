@@ -11,8 +11,7 @@ import 'package:street_light_management/screen/signup_screen/signup_form_widget.
 
 class ForgotPasswordScreen extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
-  ForgotPasswordScreen({Key? key})
-      : super(key: key);
+  ForgotPasswordScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -85,12 +84,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: Dimensions.width20),
                   child: TextFormField(
-                    
-                    decoration:  InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text("E-Mail"),
-                      hintText: authController.email.value.toString()
-                    ),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        label: Text("E-Mail"),
+                        hintText: authController.email.value.toString()),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
                       if (value!.isEmpty) {

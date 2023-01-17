@@ -26,7 +26,7 @@ class TaskAssignScreen extends StatelessWidget {
         child: Scaffold(
       key: _scaffoldKey,
       backgroundColor: AppColors.primaryLightColor,
-      drawer:  CustomDrawerScreen(),
+      drawer: CustomDrawerScreen(),
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,

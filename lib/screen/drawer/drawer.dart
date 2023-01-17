@@ -78,10 +78,12 @@ class CustomDrawerScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BigText(
-                        text:FirebaseAuth.instance.currentUser!.displayName.toString(),
+                        text: FirebaseAuth.instance.currentUser!.displayName
+                            .toString(),
                       ),
                       SmallText(
-                        text:FirebaseAuth.instance.currentUser!.email.toString(),
+                        text:
+                            FirebaseAuth.instance.currentUser!.email.toString(),
                       ),
                     ],
                   ),
@@ -127,13 +129,10 @@ class CustomDrawerScreen extends StatelessWidget {
                 lable: "About Us",
               ),
               CustomDrawerListTile(
-                leadingIcon: Icons.logout,
-                lable: "Logout",
-                onTapEvent: () => authController.userSignOut()
-                    .then(
-                        (value) => Get.offAll(RouteHelper.getWelcomeScreen()))
-                    
-              ),
+                  leadingIcon: Icons.logout,
+                  lable: "Logout",
+                  onTapEvent: () => authController.userSignOut().then(
+                      (value) => Get.offAll(RouteHelper.getWelcomeScreen()))),
             ],
           ),
         ),

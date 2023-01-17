@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:street_light_management/constant/app_colors.dart';
 
 class ThreeBulbInRow extends StatefulWidget {
-  bool?checkBoxListTileValue = false;
-   ThreeBulbInRow({
+  bool? checkBoxListTileValue = false;
+  ThreeBulbInRow({
     this.checkBoxListTileValue,
     Key? key,
   }) : super(key: key);
@@ -13,7 +13,7 @@ class ThreeBulbInRow extends StatefulWidget {
 }
 
 // bool onTap = false;
-bool  onTap =false;
+bool onTap = false;
 
 class _ThreeBulbInRowState extends State<ThreeBulbInRow> {
   @override
@@ -46,16 +46,22 @@ class _ThreeBulbInRowState extends State<ThreeBulbInRow> {
           Center(
             child: IconButton(
               iconSize: 45,
-              icon: widget.checkBoxListTileValue!=false?const Icon(Icons.lightbulb,size: 45,color: Colors.red,): onTap
+              icon: widget.checkBoxListTileValue != false
                   ? const Icon(
                       Icons.lightbulb,
                       size: 45,
-                      color: AppColors.deepPurplecolor,
+                      color: Colors.red,
                     )
-                  : const Icon(
-                      Icons.lightbulb_outline,
-                      size: 30,
-                    ),
+                  : onTap
+                      ? const Icon(
+                          Icons.lightbulb,
+                          size: 45,
+                          color: AppColors.deepPurplecolor,
+                        )
+                      : const Icon(
+                          Icons.lightbulb_outline,
+                          size: 30,
+                        ),
               onPressed: () {
                 toogleOnTap();
               },

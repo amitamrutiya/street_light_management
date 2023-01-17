@@ -18,7 +18,7 @@ class ViewMoreScreen extends StatelessWidget {
     var scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       backgroundColor: AppColors.primaryLightColor,
-      drawer:  CustomDrawerScreen(),
+      drawer: CustomDrawerScreen(),
       key: scaffoldKey,
       body: SafeArea(
         child: SizedBox(

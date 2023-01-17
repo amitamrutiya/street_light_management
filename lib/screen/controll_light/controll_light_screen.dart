@@ -94,11 +94,11 @@ class _ControllLightScreenState extends State<ControllLightScreen> {
                           print("${response.statusCode}light on");
                           response = await http.post(Uri.parse(
                               'https://api.thingspeak.com/update?api_key=KJ4TJDKRFHTNGG70&field2=1'));
-                          Future.delayed(const Duration(seconds: 1));
+                          // Future.delayed(const Duration(seconds: 1));
                           print("${response.statusCode}light on");
                           response = await http.post(Uri.parse(
                               'https://api.thingspeak.com/update?api_key=KJ4TJDKRFHTNGG70&field2=1'));
-                          Future.delayed(const Duration(seconds: 1));
+                          // Future.delayed(const Duration(seconds: 1));
                           print("${response.statusCode}light on");
                           response = await http.post(Uri.parse(
                               'https://api.thingspeak.com/update?api_key=KJ4TJDKRFHTNGG70&field2=1'));
@@ -123,10 +123,10 @@ class _ControllLightScreenState extends State<ControllLightScreen> {
                           Future.delayed(const Duration(seconds: 1));
                           response = await http.post(Uri.parse(
                               'https://api.thingspeak.com/update?api_key=KJ4TJDKRFHTNGG70&field2=0'));
-                          Future.delayed(const Duration(seconds: 1));
+                          // Future.delayed(const Duration(seconds: 1));
                           response = await http.post(Uri.parse(
                               'https://api.thingspeak.com/update?api_key=KJ4TJDKRFHTNGG70&field2=0'));
-                          Future.delayed(const Duration(seconds: 1));
+                          // Future.delayed(const Duration(seconds: 1));
                           response = await http.post(Uri.parse(
                               'https://api.thingspeak.com/update?api_key=KJ4TJDKRFHTNGG70&field2=0'));
                           // Future.delayed(const Duration(seconds: 1));

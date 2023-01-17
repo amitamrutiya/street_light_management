@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '760649996735',
     projectId: 'smart-street-light-f6ee8',
     storageBucket: 'smart-street-light-f6ee8.appspot.com',
-    iosClientId: '760649996735-6uig1bvs92lvt6e7t7pjap8k9sbvanm9.apps.googleusercontent.com',
+    iosClientId:
+        '760649996735-6uig1bvs92lvt6e7t7pjap8k9sbvanm9.apps.googleusercontent.com',
     iosBundleId: 'com.example.streetLightManagement',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '760649996735',
     projectId: 'smart-street-light-f6ee8',
     storageBucket: 'smart-street-light-f6ee8.appspot.com',
-    iosClientId: '760649996735-6uig1bvs92lvt6e7t7pjap8k9sbvanm9.apps.googleusercontent.com',
+    iosClientId:
+        '760649996735-6uig1bvs92lvt6e7t7pjap8k9sbvanm9.apps.googleusercontent.com',
     iosBundleId: 'com.example.streetLightManagement',
   );
 }

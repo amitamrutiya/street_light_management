@@ -77,7 +77,7 @@ class RouteHelper {
     GetPage(
       name: customeDrawerScreen,
       transition: Transition.leftToRight,
-      page: () =>  CustomDrawerScreen(),
+      page: () => CustomDrawerScreen(),
     ),
     GetPage(
       name: taskAssignScreen,

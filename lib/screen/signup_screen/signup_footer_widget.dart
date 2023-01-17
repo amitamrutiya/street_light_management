@@ -32,7 +32,8 @@ class SignUpFooterWidget extends StatelessWidget {
                   authController.checkUserExists().then((value) async {
                     if (value == true) {
                       await authController
-                          .getUserDataFromFirestore(authController.uid.value.toString())
+                          .getUserDataFromFirestore(
+                              authController.uid.value.toString())
                           .then((value) => authController
                               .saveDataToSharedPreferences()
                               .then((value) => authController.setSignIn()));

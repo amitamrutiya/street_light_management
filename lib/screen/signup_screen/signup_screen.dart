@@ -33,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
                 );
               }
               if (snapshot.hasData) {
-                return  VerifyEmailScreen();
+                return VerifyEmailScreen();
               } else {
                 return SingleChildScrollView(
                   child: Container(

@@ -44,7 +44,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   //   // await authController.getDataFromSharedPreferences();
   //   await authController
   //       .getUserDataFromFirestore(FirebaseAuth.instance.currentUser!.uid);
-    
+
   // }
 
   Future sendVerificationEmail() async {

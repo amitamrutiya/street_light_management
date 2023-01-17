@@ -28,7 +28,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
             return SafeArea(
               child: Scaffold(
                 key: _scaffoldKey,
-                drawer:  CustomDrawerScreen(),
+                drawer: CustomDrawerScreen(),
                 body: SizedBox(
                   width: double.infinity,
                   height: double.infinity,
