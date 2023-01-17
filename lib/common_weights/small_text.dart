@@ -6,13 +6,15 @@ class SmallText extends StatelessWidget {
   final String text;
   double size;
   double height;
-  SmallText(
-      {Key? key,
-      this.color = AppColors.darkgreyColor,
-      required this.text,
-      this.size = 12,
-      this.height = 1.2})
-      : super(key: key);
+  TextOverflow? overFlow;
+  SmallText({
+    Key? key,
+    this.color = AppColors.darkgreyColor,
+    required this.text,
+    this.size = 12,
+    this.height = 1.2,
+    this.overFlow = TextOverflow.ellipsis,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,9 @@ class SmallText extends StatelessWidget {
         fontFamily: 'Lora',
         height: height,
       ),
+      overflow: overFlow,
+      softWrap: false,
+      maxLines: 1,
     );
   }
 }

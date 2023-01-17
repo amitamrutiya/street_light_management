@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:street_light_management/constant/app_colors.dart';
-
 import 'package:street_light_management/constant/dimensions.dart';
 
 class BigText extends StatelessWidget {
   Color? color;
   final String text;
-  double size;
-  TextOverflow overFlow;
+  double? size;
+  TextOverflow? overFlow;
   FontWeight? fontWeight;
   BigText(
       {Key? key,
@@ -30,6 +29,7 @@ class BigText extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.bold,
         fontFamily: 'Lora',
       ),
+      softWrap: true,
     );
   }
 }

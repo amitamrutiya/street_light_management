@@ -4,14 +4,11 @@ import 'package:street_light_management/constant/app_colors.dart';
 
 class TAppsTheme {
   static ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
-    textTheme: TextTheme(
-      headline2: GoogleFonts.montserrat(
-        color: AppColors.primaryTextColor
-      ) 
-    )
-  );
-  
+      brightness: Brightness.light,
+      textTheme: TextTheme(
+          headline2:
+              GoogleFonts.montserrat(color: AppColors.primaryTextColor)));
+
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
   );

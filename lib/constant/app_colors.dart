@@ -1,6 +1,7 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppColors {
+  static const Color deepPurplecolor = Colors.deepPurple;
   static const Color primaryTextColor = Color(0xFF140E1D);
   static const Color primaryColor = Color(0xffC89CFF);
   static const Color primaryDarkColor = Color(0xff493168);
@@ -10,7 +11,7 @@ class AppColors {
   static const Color secondryDarkColor = Color(0xff29456D);
   static const Color secondryLightColor = Color(0xffD5E6FF);
   static const Color darkgreyColor = Color(0xFF797A7B);
-  static const Color lightgreyColor = Color(0xFFB1B2B2);
+  static const Color lightgreyColor = Color.fromARGB(255, 212, 212, 212);
   static const Color iconColor1 = Color(0xFFffd28d);
   static const Color iconColor2 = Color(0xFFfcab88);
   static const Color signColor = Color(0xFFa9a29f);
